@@ -139,14 +139,12 @@ $CFG->dboptions = array(
                              // eg 10.
                              // Lower values increase the performance, but setting it too low means
                              // missing the primary-replica sync.
-      'exclude_tables' => [  // Tables to exclude from read-only replica feature.
-          'table1',          // Should not be used, unless in rare cases when some area of the system
-          'table2',          // is malfunctioning and you still want to use readonly feature.
-      ],                     // Then one can exclude offending tables while investigating.
-
-    More info available in lib/dml/moodle_read_replica_trait.php where the feature is implemented.
-    ]
-    */
+//   exclude_tables' => [   
+    //       'table1',         
+    //       'table2',         
+    //   ],                    
+    // ]
+    // */
 ];
 
 

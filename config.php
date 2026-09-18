@@ -38,13 +38,14 @@ $CFG = new stdClass();
 // will be stored.  This database must already have been created         //
 // and a username/password created to access it.                         //
 
-$CFG->dbtype    = 'mysqli';
-$CFG->dblibrary = 'native';
-$CFG->dbhost    = 'moodle-munucv-3ltu0-mysql.moodle-munucv-3ltu0.svc.cluster.local';
-$CFG->dbname    = 'moodle';
-$CFG->dbuser    = 'marcel';
-$CFG->dbpass    = 'munucevistas2026';
+$CFG->dbtype    = 'mysqli'; 
+$CFG->dbhost    = getenv('DB_HOST'); // Sevalla te dará el Host Interno aquí
+$CFG->dbname    = getenv('DB_NAME');
+$CFG->dbuser    = getenv('DB_USER');
+$CFG->dbpass    = getenv('DB_PASSWORD');
+$CFG->dbport    = getenv('DB_PORT') ? getenv('DB_PORT') : 3306;
 $CFG->prefix    = 'mdl_';
+
 
 $CFG->dboptions = array(
     'dbpersist' => false,

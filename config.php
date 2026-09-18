@@ -40,7 +40,7 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = '127.0.0.1'; // Por lo general una IP o dominio provisto por la plataforma
+$CFG->dbhost    = 'moodle-munucv-3ltu0-mysql.moodle-munucv-3ltu0.svc.cluster.local'; // Por lo general una IP o dominio provisto por la plataforma
 $CFG->dbname    = 'moodle';
 $CFG->dbuser    = 'marcel';
 $CFG->dbpass    = 'munucevistas2026';

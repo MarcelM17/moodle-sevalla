@@ -40,7 +40,7 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = 'moodle-munucv-3ltu0-mysql.moodle-munucv-3ltu0.svc.cluster.local'; // Por lo general una IP o dominio provisto por la plataforma
+$CFG->dbhost    = '127.0.0.1'; // Por lo general una IP o dominio provisto por la plataforma
 $CFG->dbname    = 'moodle';
 $CFG->dbuser    = 'marcel';
 $CFG->dbpass    = 'munucevistas2026';
@@ -56,7 +56,7 @@ $CFG->dboptions = [
                                             //   (please note mysql is always using socket
                                             //   if dbhost is 'localhost' - if you need
                                             //   local port connection use '127.0.0.1')
-    'dbport'    => '',                      // The TCP port number to use when connecting
+    'dbport'    => '3306',                      // The TCP port number to use when connecting
                                             //   to the server. Keep empty string for the
                                             //   default port
     'dbhandlesoptions' => false,            // On PostgreSQL poolers like pgbouncer don't

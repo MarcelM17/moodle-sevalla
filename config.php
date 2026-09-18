@@ -38,19 +38,21 @@ $CFG = new stdClass();
 // will be stored.  This database must already have been created         //
 // and a username/password created to access it.                         //
 
+$dbport = getenv('DB_PORT') ? getenv('DB_PORT') : 3306;
+
 $CFG->dbtype    = 'mysqli'; 
 $CFG->dbhost    = getenv('DB_HOST'); // Sevalla te dará el Host Interno aquí
-$CFG->dbname    = getenv('DB_NAME');
-$CFG->dbuser    = getenv('DB_USER');
+$CFG->dbname    = getenv('DB_DATABASE');
+$CFG->dbuser    = getenv('DB_USERNAME');
 $CFG->dbpass    = getenv('DB_PASSWORD');
-$CFG->dbport    = getenv('DB_PORT') ? getenv('DB_PORT') : 3306;
+$CFG->dbport    = $dbport;
 $CFG->prefix    = 'mdl_';
 
 
 $CFG->dboptions = array(
     'dbpersist' => false,
     'dbsocket'  => false,
-    'dbport'    => '3306',
+    'dbport'    => $dbport,
     'dbcollation' => 'utf8mb4_unicode_ci',
 );
                                             //   support. If you wish to use partial UTF-8
@@ -159,7 +161,7 @@ $CFG->dboptions = array(
 // If you need both intranet and Internet access please read
 // http://docs.moodle.org/en/masquerading
 
-$CFG->wwwroot   = 'https://moodle-mun-ucv-3cm4h.sevalla.app';
+$CFG->wwwroot   =  getenv('MOODLE_URL');
 
 //=========================================================================
 // 3. DATA FILES LOCATION

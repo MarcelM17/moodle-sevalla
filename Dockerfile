@@ -1,7 +1,6 @@
 FROM php:8.2-apache
 
 # Instalar dependencias del sistema y extensiones de PHP obligatorias para Moodle
-# Se incluye libexif-dev para la extensión exif
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -31,10 +30,11 @@ RUN a2enmod rewrite
 # Copiar el código fuente de Moodle al contenedor
 COPY . /var/www/html/
 
-# Instalar Composer y ejecutar las dependencias requeridas en la raíz de Moodle
-RUN curl -sS https://getcomposer.org | php -- --install-dir=/usr/local/bin --filename=composer \
-    && cd /var/www/html \
-    && composer install --no-dev --classmap-authoritative
+# Método oficial y seguro para instalar Composer en Docker
+COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
+
+# Ejecutar la instalación de dependencias en la raíz de Moodle
+RUN cd /var/www/html && composer install --no-dev --classmap-authoritative
 
 # Crear la carpeta de datos de Moodle fuera del HTML público por seguridad
 RUN mkdir -p /var/moodledata \

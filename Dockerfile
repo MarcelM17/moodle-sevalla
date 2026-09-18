@@ -13,8 +13,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd intl mysqli pdo_mysql soap xml zip opcache
 
-# Configurar Apache para que el DocumentRoot apunte correctamente
-ENV APACHE_DOCUMENT_ROOT=/var/www/html
+#El DocumentRoot ahora apunta estrictamente a /public
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
 RUN sed -ri -s "s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/sites-available/*.conf
 RUN sed -ri -s "s!/var/www/!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
@@ -25,7 +26,10 @@ RUN a2enmod rewrite
 COPY . /var/www/html/
 
 # Crear la carpeta de datos de Moodle fuera del HTML público por seguridad
-RUN mkdir -p /var/moodledata && chown -R www-data:www-data /var/moodledata /var/www/html \
-    && chmod -R 777 /var/moodledata
+# Modificado a 755/775 para el código fuente por seguridad en Sevalla
+RUN mkdir -p /var/moodledata \
+    && chown -R www-data:www-data /var/moodledata /var/www/html \
+    && chmod -R 777 /var/moodledata \
+    && chmod -R 755 /var/www/html
 
 EXPOSE 80

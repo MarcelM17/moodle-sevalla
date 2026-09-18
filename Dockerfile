@@ -26,6 +26,6 @@ COPY . /var/www/html/
 
 # Crear la carpeta de datos de Moodle fuera del HTML público por seguridad
 RUN mkdir -p /var/moodledata && chown -R www-data:www-data /var/moodledata /var/www/html \
-    && chmod -R 755 /var/moodledata
+    && chmod -R 777 /var/moodledata
 
 EXPOSE 80

@@ -40,30 +40,18 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = 'moodle-munucv-3ltu0-mysql.moodle-munucv-3ltu0.svc.cluster.local'; // Por lo general una IP o dominio provisto por la plataforma
+$CFG->dbhost    = 'moodle-munucv-3ltu0-mysql.moodle-munucv-3ltu0.svc.cluster.local';
 $CFG->dbname    = 'moodle';
 $CFG->dbuser    = 'marcel';
 $CFG->dbpass    = 'munucevistas2026';
 $CFG->prefix    = 'mdl_';
-$CFG->dboptions = [
-    'dbpersist' => false,                   // Should persistent database connections be
-                                            //   used? Set to 'false' for the most stable
-                                            //   setting, 'true' can improve performance
-                                            //   sometimes
-    'dbsocket'  => false,                   // Should connection via UNIX socket be used?
-                                            //   if you set it to 'true' or custom path
-                                            //   here set dbhost to 'localhost',
-                                            //   (please note mysql is always using socket
-                                            //   if dbhost is 'localhost' - if you need
-                                            //   local port connection use '127.0.0.1')
-    'dbport'    => '3306',                      // The TCP port number to use when connecting
-                                            //   to the server. Keep empty string for the
-                                            //   default port
-    'dbhandlesoptions' => false,            // On PostgreSQL poolers like pgbouncer don't
-                                            //   support advanced options on connection.
-                                            //   If you set those in the database then
-                                            //   the advanced settings will not be sent.
-    'dbcollation' => 'utf8mb4_unicode_ci',  // MySQL has partial and full UTF-8
+
+$CFG->dboptions = array(
+    'dbpersist' => false,
+    'dbsocket'  => false,
+    'dbport'    => '3306',
+    'dbcollation' => 'utf8mb4_unicode_ci',
+);
                                             //   support. If you wish to use partial UTF-8
                                             //   (three bytes) then set this option to
                                             //   'utf8_unicode_ci'. If using the recommended

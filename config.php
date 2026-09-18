@@ -162,6 +162,7 @@ $CFG->dboptions = array(
 // http://docs.moodle.org/en/masquerading
 
 $CFG->wwwroot   =  getenv('MOODLE_URL');
+$CFG->sslproxy = true;
 
 //=========================================================================
 // 3. DATA FILES LOCATION

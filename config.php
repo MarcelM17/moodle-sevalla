@@ -218,9 +218,6 @@ $CFG->directorypermissions = 02777;
 
 $CFG->admin = 'admin';
 
-$CFG->cron_keepalive = 0;
-
-
 
 //=========================================================================
 // 6. OTHER MISCELLANEOUS SETTINGS (ignore these for new installations)

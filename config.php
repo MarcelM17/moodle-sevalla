@@ -218,7 +218,7 @@ $CFG->directorypermissions = 02777;
 
 $CFG->admin = 'admin';
 
-$CFG->cron_keepalive = false;
+$CFG->cron_keepalive = 0;
 
 
 

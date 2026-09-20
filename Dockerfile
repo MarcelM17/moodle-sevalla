@@ -48,4 +48,12 @@ RUN echo "upload_max_filesize = 100M" > /usr/local/etc/php/conf.d/uploads.ini \
     && echo "max_execution_time = 300" >> /usr/local/etc/php/conf.d/uploads.ini \
     && echo "memory_limit = 512M" >> /usr/local/etc/php/conf.d/uploads.ini
 
+RUN mkdir -p /var/moodledata/custom_themes
+
+# 2. Eliminar la carpeta de temas del contenedor inmutable para poder reemplazarla
+# NOTA: Si tu Moodle está en /app usa la línea A. Si está en /var/www/html usa la línea B.
+# Línea A:
+# Línea B (Descoméntala quitando el '#' si tu Moodle usa la ruta clásica de Apache):
+RUN rm -rf /var/www/html/public/theme && ln -s /var/moodledata/custom_themes /var/www/html/public/theme
+
 EXPOSE 80
